@@ -6,6 +6,7 @@
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/sitemap": "^0.0.3",
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "libraries-frontend-framelunch": "framelunch/libraries-frontend-framelunch",
     "nuxt": "^1.3.0",
     "vue-property-decorator": "^6.0.0",
@@ -26,7 +27,7 @@
     "test:coverage": "jest --coverage",
     "lint": "run-p lint:*",
     "lint:style": "stylelint './src/**/*.css'",
-    "lint:script": "tslint './src/**/*.ts'",
+    "lint:script": "tslint --format stylish './src/**/*.ts'",
     "lint:vue": "run-p lint:vue:*",
     "lint:vue:style": "stylelint --config .vue.stylelintrc.js './src/**/*.vue'",
     "fix": "prettier --write './src/**/*.{ts,js,json,css,vue}'",
@@ -52,7 +53,7 @@
       ],
       "*.vue": [
         "prettier --write",
-        "stylelint --config .vue.stylelintrc",
+        "stylelint --config .vue.stylelintrc.js",
         "git add"
       ]
     }

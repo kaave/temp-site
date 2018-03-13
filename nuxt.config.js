@@ -33,8 +33,8 @@ const routes = [
 /*
  * meta
  */
-const title = 'Nuxt.js template - TypeScript, PostCSS';
-const description = 'Nuxt.js project';
+const title = "TWWARR - Tokai web worker's association for rare restaurants.";
+const description = "TWWARR (Tokai web worker's association for rare restaurants) official site";
 const metaImage = 'https://dummyimage.com/300x200/3b8070/fff.png&text=Nuxt.js+template';
 const baseUrl = process.env.BASE_URL || `http://${host}:${port}`;
 const og = [
@@ -69,14 +69,25 @@ const sitemap = {
   hostname: baseUrl,
   cacheTime: 1000 * 60 * 15,
   generate: true, // Enable me when using nuxt generate
-  exclude: ['/members/show', '/members/edit'],
+  exclude: [
+    // '/members/show',
+    // '/members/edit'
+  ],
   routes,
 };
 
 module.exports = {
   srcDir: 'src/',
   env: { baseUrl },
-  head: { title, meta, link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }] },
+  head: {
+    title,
+    meta,
+    script: [{ defer: true, src: 'https://use.fontawesome.com/releases/v5.0.8/js/all.js' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https//fonts.googleapis.com/css?family=Oswald:400,700,900|Roboto:400,700' },
+    ],
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -93,8 +104,11 @@ module.exports = {
   ** Build configuration
   */
   // ここでvariablesを渡しても、postcss-custom-propertiesが発動しない
-  css: ['~/styles/keyframes.css', '~/styles/reset.css'].map(src => ({ src, lang: 'postcss' })),
-  build: { postcss },
+  css: ['~/styles/root.css'].map(src => ({ src, lang: 'postcss' })),
+  build: {
+    postcss,
+    vendor: ['babel-polyfill'],
+  },
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '~~/modules/typescript.js'],
   extractCSS: true, // 別途CSSを出力するのではなく、htmlのstyleタグに埋め込まれる
   axios: {},

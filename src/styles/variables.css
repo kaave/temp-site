@@ -1,5 +1,10 @@
 @import "libraries-frontend-framelunch/css/_variables.css";
 
 :root {
-  --color-text: #f0f0f0;
+  --color-text: #121;
+  --color-bg: hsl(0, 0%, 95%);
+  --max-content-width: 1070px;
+  --fontFamily-base: "Roboto", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic,
+    YuGothicM, "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
+  --fontFamily-oswald: "Oswald", sans-serif;
 }

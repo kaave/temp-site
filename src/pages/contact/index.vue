@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import { State, Action, Getter } from 'vuex-class';
+import { Component, Vue } from 'vue-property-decorator';
 
 import SiteHeader from '~/components/Header.vue';
 
@@ -8,15 +7,11 @@ import SiteHeader from '~/components/Header.vue';
 export default class extends Vue {}
 </script>
 
-<style lang="postcss" scoped>
-@import '../styles/variables.css';
-</style>
-
 <template>
 <div>
-  <site-header></site-header>
+  <site-header />
   <main id="main" class="Main" role="main">
-    top
+    contact
   </main>
 </div>
 </template>
