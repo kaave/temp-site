@@ -104,7 +104,7 @@ a {
           <router-link to="/parties">parties</router-link>
         </li> -->
         <li class="cell -link">
-          <router-link to="/contact">contact</router-link>
+          <router-link to="/how-to-join">How to join</router-link>
         </li>
       </ul>
     </nav>

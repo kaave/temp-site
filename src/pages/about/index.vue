@@ -60,7 +60,7 @@ export default class extends Vue {
   font-weight: var(--fontWeight-black);
   line-height: 0.8;
   letter-spacing: -0.15em;
-  color: #ccc;
+  color: #ccc6;
 
   &:nth-of-type(2) {
     z-index: -1;
