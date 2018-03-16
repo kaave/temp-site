@@ -1,30 +1,26 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { State, Action, Getter } from 'vuex-class';
+import 'vue-router';
 
-import SiteHeader from '~/components/Header.vue';
-import PartiesComponent from '~/components/Parties.vue';
 import * as Configs from '~/constants/configs';
-import { Parties, PartySummaryEntity } from '~/interfaces/Party';
+import { PartyDetailEntity } from '~/interfaces/Party';
+import SiteHeader from '~/components/Header.vue';
 
-interface Summary {
-  fileMap: Parties;
-}
-
-@Component({ components: { SiteHeader, PartiesComponent } })
+@Component({ components: { SiteHeader } })
 export default class extends Vue {
-  parties: Parties | null = null;
+  party: PartyDetailEntity | null = null;
 
   mounted() {
-    fetch(Configs.parties.summary)
+    fetch(`/parties/${this.$route.params.key}.json`)
       .then(data => data.json())
-      .then((summary: Summary) => (this.parties = summary.fileMap));
+      .then((party: PartyDetailEntity) => (this.party = party));
   }
 }
 </script>
 
 <style lang="postcss" scoped>
-@import '../styles/variables.css';
+@import '../../styles/variables.css';
 
 .Main {
   width: 100%;
@@ -43,7 +39,9 @@ export default class extends Vue {
   <site-header></site-header>
   <main id="main" class="Main" role="main">
     <div class="inner">
-      <parties-component v-if="parties != null" :parties="parties" />
+      <article v-if="party != null">
+        <span class="article" v-html="party.bodyHtml"></span>
+      </article>
     </div>
   </main>
 </div>

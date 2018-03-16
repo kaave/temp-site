@@ -133,6 +133,10 @@ $RECYCLE.BIN/
 dist
 src/static/sitemap.xml
 
+# markdown build files
+src/static/parties.json
+src/static/parties/*
+
 # Editors
 /.vscode
 /.idea
