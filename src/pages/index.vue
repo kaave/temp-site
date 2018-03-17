@@ -5,23 +5,23 @@ import { State, Action, Getter } from 'vuex-class';
 import SiteHeader from '~/components/Header.vue';
 import PartiesComponent from '~/components/Parties.vue';
 import * as Configs from '~/constants/configs';
-import { Parties, PartySummaryEntity } from '~/interfaces/Party';
-
-interface Summary {
-  fileMap: Parties;
-}
+import { PartySummary, PartySummaryEntity } from '~/interfaces/Party';
 
 @Component({ components: { SiteHeader, PartiesComponent } })
 export default class extends Vue {
-  parties: Parties | null = null;
+  parties: PartySummary[] | null = null;
 
   mounted() {
     fetch(Configs.parties.summary)
       .then(data => data.json())
-      .then((summary: Summary) => (this.parties = summary.fileMap));
+      .then(
+        (summary: PartySummaryEntity[]) =>
+          (this.parties = summary.map(({ date, overview, title }) => ({ overview, title, date: new Date(date) }))),
+      );
   }
 }
 </script>
+
 
 <style lang="postcss" scoped>
 @import '../styles/variables.css';
@@ -40,7 +40,7 @@ export default class extends Vue {
 
 <template>
 <div>
-  <site-header></site-header>
+  <site-header />
   <main id="main" class="Main" role="main">
     <div class="inner">
       <parties-component v-if="parties != null" :parties="parties" />

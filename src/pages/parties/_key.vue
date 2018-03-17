@@ -40,7 +40,9 @@ export default class extends Vue {
   <main id="main" class="Main" role="main">
     <div class="inner">
       <article v-if="party != null">
-        <span class="article" v-html="party.bodyHtml"></span>
+        <span class="article" v-html="party.date"></span>
+        <span class="article" v-html="party.title"></span>
+        <span class="article" v-html="party.html"></span>
       </article>
     </div>
   </main>

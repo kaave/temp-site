@@ -1,25 +1,23 @@
 export interface PartySummaryEntity {
-  draft: false;
+  date: string;
+  overview: string;
   title: string;
-  dir: string;
-  base: string;
-  ext: string;
-  sourceBase: string;
-  sourceExt: string;
+}
+
+export interface PartySummary {
+  date: Date;
+  overview: string;
+  title: string;
 }
 
 export interface PartyDetailEntity {
-  draft: false;
-  bodyContent: string;
-  bodyHtml: string;
+  date: string;
   title: string;
-  dir: string;
-  base: string;
-  ext: string;
-  sourceBase: string;
-  sourceExt: string;
+  html: string;
 }
 
-export interface Parties {
-  [key: string]: PartySummaryEntity;
+export interface PartyDetail {
+  date: Date;
+  title: string;
+  html: string;
 }
