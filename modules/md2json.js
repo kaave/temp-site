@@ -1,22 +1,38 @@
 #!/usr/bin/env node
 
 /*
- * dependencies
- * commander chokidar mkdirp globby markdown-it markdown-it-front-matter yamljs jsdom html-minifier
+ * --- scripts sample
+ * "md": "node modules/md2json.js --overview-length 100 --entry-dir entries --summary-path src/static/parties.json --detail-path src/static/parties",
+ * "dev:md": "npm run md -- -w -f",
+ *
+ * --- add layouts/default.vue
+ * <style lang="postcss">
+ * @import 'prismjs/themes/prism-okaidia.css';
+ * </style>
+ *
+ * --- dependencies
+ * commander chalk chokidar mkdirp globby markdown-it markdown-it-front-matter markdown-it-prism yamljs jsdom html-minifier
  */
 
 const fs = require('fs');
 const path = require('path');
 const program = require('commander');
 const chokidar = require('chokidar');
+const chalk = require('chalk');
 const mkdirp = require('mkdirp');
 const globby = require('globby');
 const md = require('markdown-it');
 const mdFrontmatter = require('markdown-it-front-matter');
+const mdPrism = require('markdown-it-prism');
 const yamljs = require('yamljs');
 const { JSDOM } = require('jsdom');
 const { minify } = require('html-minifier');
 
+const { document } = new JSDOM().window;
+
+/*
+ * set commandline options
+ */
 program
   .version('0.0.1')
   .option('-w, --watch', 'Watch mode enable?')
@@ -27,21 +43,28 @@ program
   .option('--detail-path [value]', 'Detail json output path.', path.join('src', 'static', 'entries'))
   .parse(process.argv);
 
+/*
+ * set global configs
+ */
 const OVERVIEW_LENGTH = program.overviewLength;
 const ENTRIES_PATH = path.join(process.cwd(), program.entryDir);
 const SUMMARY_PATH = path.join(process.cwd(), program.summaryPath);
 const DETAIL_PATH = path.join(process.cwd(), program.detailPath);
-const { document } = new JSDOM().window;
 
+/*
+ * functions
+ */
 function getEntryInfo (date) {
   return getCompiledData(path.join(ENTRIES_PATH, `${date}.md`));
 }
 
 function getCompiledData (filepath) {
   let head = {};
-  const renderer = md().use(mdFrontmatter, yaml => {
-    head = yamljs.parse(yaml);
-  });
+  const renderer = md()
+    .use(mdFrontmatter, yaml => {
+      head = yamljs.parse(yaml);
+    })
+    .use(mdPrism);
   const source = fs.readFileSync(filepath, 'utf8');
   const html = minify(renderer.render(source).trim(), { collapseWhitespace: true });
 
@@ -55,8 +78,7 @@ function getOverview (source) {
 function outputSummary (source) {
   const data = source.map(({ date, overview, title }) => ({ date, overview, title }));
   fs.writeFileSync(SUMMARY_PATH, JSON.stringify(data));
-  console.log('output summary:');
-  console.log(`  ${SUMMARY_PATH}`);
+  console.log(`${chalk.bgBlue('OUTPUT SUMMARY')} ${SUMMARY_PATH}`);
 }
 
 function parseOutputData ({ date, html, title }) {
@@ -65,8 +87,7 @@ function parseOutputData ({ date, html, title }) {
 
 function outputDetail (data) {
   fs.writeFileSync(path.join(DETAIL_PATH, `${data.date}.json`), JSON.stringify(data));
-  console.log('output datail:');
-  console.log(`  ${path.join(DETAIL_PATH, `${data.date}.json`)}`);
+  console.log(`${chalk.bgGreen('OUTPUT DETAIL')} ${path.join(DETAIL_PATH, `${data.date}.json`)}`);
 }
 
 function outputDetails (source) {
@@ -96,15 +117,17 @@ function main () {
   outputDetails(allPostsDate);
 }
 
+/*
+ * run
+ */
 main();
 
 if (program.watch) {
-  console.log(`\n--- watch: ${ENTRIES_PATH}\n`);
+  console.log(`\n${chalk.bgYellow('WATCH')} ${ENTRIES_PATH}\n`);
   chokidar.watch(ENTRIES_PATH, { ignoreInitial: true }).on('all', (event, changePath) => {
     const allPostsDate = getPostsData();
     const date = path.basename(changePath, '.md');
-    console.log(`${event}:`);
-    console.log(`  ${changePath}`);
+    console.log(`${chalk.bgMagenta(event)} ${changePath}`);
 
     outputSummary(allPostsDate);
     const detail = getJsonData({ from: date });
