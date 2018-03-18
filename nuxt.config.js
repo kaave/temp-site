@@ -104,12 +104,11 @@ module.exports = {
   ** Build configuration
   */
   // ここでvariablesを渡しても、postcss-custom-propertiesが発動しない
-  css: ['~/styles/root.css'].map(src => ({ src, lang: 'postcss' })),
+  css: [].map(src => ({ src, lang: 'postcss' })),
   build: {
     postcss,
     vendor: ['babel-polyfill', 'whatwg-fetch'],
   },
-  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '~~/modules/typescript.js'],
+  modules: ['@nuxtjs/sitemap', '~~/modules/typescript.js'],
   extractCSS: true, // 別途CSSを出力するのではなく、htmlのstyleタグに埋め込まれる
-  axios: {},
 };

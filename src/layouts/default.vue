@@ -1,5 +1,29 @@
 <style lang="postcss">
 @import 'prismjs/themes/prism-okaidia.css';
+@import '../styles/variables.css';
+@import '../styles/reset.css';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--fontFamily-base);
+  font-size: 1.4rem;
+  font-feature-settings: 'palt';
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-image: url('../assets/001-Basik-Paper.png');
+  background-repeat: repeat;
+  background-color: var(--color-bg);
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
 </style>
 
 <template><nuxt/></template>
