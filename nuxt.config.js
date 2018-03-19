@@ -109,6 +109,6 @@ module.exports = {
     postcss,
     vendor: ['babel-polyfill', 'whatwg-fetch'],
   },
-  modules: ['@nuxtjs/sitemap', '~~/modules/typescript.js'],
+  modules: ['@nuxtjs/sitemap', '~~/modules/imagemin.js', '~~/modules/typescript.js'],
   extractCSS: true, // 別途CSSを出力するのではなく、htmlのstyleタグに埋め込まれる
 };
