@@ -10,6 +10,7 @@ const autoprefixer = require('autoprefixer');
 
 const parties = require('./src/static/parties.json');
 
+const googleAnalyzeID = '';
 const argv = parseArgs(process.argv.slice(2), {
   alias: { H: 'hostname', p: 'port' },
   string: ['H'],
@@ -109,6 +110,11 @@ module.exports = {
     postcss,
     vendor: ['babel-polyfill', 'whatwg-fetch'],
   },
-  modules: ['@nuxtjs/sitemap', '~~/modules/imagemin.js', '~~/modules/typescript.js'],
+  modules: [
+    '@nuxtjs/sitemap',
+    ['@nuxtjs/google-analytics', { id: googleAnalyzeID }],
+    '~~/modules/imagemin.js',
+    '~~/modules/typescript.js',
+  ],
   extractCSS: true, // 別途CSSを出力するのではなく、htmlのstyleタグに埋め込まれる
 };
