@@ -3,11 +3,23 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { State, Action, Getter } from 'vuex-class';
 
 import SiteHeader from '~/components/Header.vue';
+import PartiesComponent from '~/components/Parties.vue';
 import * as Configs from '~/constants/configs';
 import { PartySummary, PartySummaryEntity } from '~/interfaces/Party';
 
-@Component({ components: { SiteHeader } })
-export default class extends Vue {}
+@Component({ components: { SiteHeader, PartiesComponent } })
+export default class extends Vue {
+  parties: PartySummary[] | null = null;
+
+  mounted() {
+    fetch(Configs.parties.summary)
+      .then(data => data.json())
+      .then(
+        (summary: PartySummaryEntity[]) =>
+          (this.parties = summary.map(({ date, overview, title }) => ({ overview, title, date: new Date(date) }))),
+      );
+  }
+}
 </script>
 
 
@@ -31,9 +43,7 @@ export default class extends Vue {}
   <site-header />
   <main id="main" class="Main" role="main">
     <div class="inner">
-      <section class="map">
-        <h2 class="header">MAP</h2>
-      </section>
+      <parties-component v-if="parties != null" :parties="parties" />
     </div>
   </main>
 </div>

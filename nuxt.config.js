@@ -8,6 +8,8 @@ const postcssFixes = require('postcss-fixes');
 const postcssUrl = require('postcss-url');
 const autoprefixer = require('autoprefixer');
 
+const parties = require('./src/static/parties.json');
+
 const argv = parseArgs(process.argv.slice(2), {
   alias: { H: 'hostname', p: 'port' },
   string: ['H'],
@@ -26,9 +28,7 @@ const postcss = [
   autoprefixer(),
 ];
 // 動的ルーティングのページをある程度静的に吐き出したい箇所はここにセット
-const routes = [
-  // '/members/1', '/members/2', '/members/3'
-];
+const routes = parties.map(({ date }) => `/parties/${date}`);
 
 /*
  * meta
