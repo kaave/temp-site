@@ -55,6 +55,10 @@
   dependencies:
     date-fns "*"
 
+"@types/googlemaps@^3.30.8":
+  version "3.30.8"
+  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.30.8.tgz#cc6ab90f79f3a8b799860ea1d70252a221af702e"
+
 "@types/jest@^22.2.0":
   version "22.2.0"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.0.tgz#55ce83139f7ad1b48b414c3927746614c6963c0f"
@@ -1159,6 +1163,22 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+blog-entries-to-json@framelunch/blog-entries-to-json:
+  version "0.0.1"
+  resolved "https://codeload.github.com/framelunch/blog-entries-to-json/tar.gz/bff1d7eef8f54d08ccbf0a04d706479928de5f93"
+  dependencies:
+    chalk "^2.3.2"
+    chokidar "^2.0.2"
+    commander "^2.15.1"
+    globby "^8.0.1"
+    html-minifier "^3.5.12"
+    jsdom "^11.6.2"
+    markdown-it "^8.4.1"
+    markdown-it-front-matter "^0.1.2"
+    markdown-it-prism "^1.1.2"
+    mkdirp "^0.5.1"
+    yamljs "^0.3.0"
+
 bluebird@^3.0.5, bluebird@^3.1.1, bluebird@^3.4.7, bluebird@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
@@ -1829,6 +1849,10 @@ commander@2.14.x, commander@^2.12.1, commander@^2.13.0, commander@^2.14.1, comma
 commander@2.15.x, commander@^2.15.0:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.0.tgz#ad2a23a1c3b036e392469b8012cec6b33b4c1322"
+
+commander@^2.15.1:
+  version "2.15.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
 
 commander@~2.13.0:
   version "2.13.0"
@@ -4127,6 +4151,19 @@ html-minifier@^3.2.3, html-minifier@^3.5.9:
 html-minifier@^3.5.11:
   version "3.5.11"
   resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.11.tgz#f248927f2e076733f58c136de0376553beb101f8"
+  dependencies:
+    camel-case "3.0.x"
+    clean-css "4.1.x"
+    commander "2.15.x"
+    he "1.1.x"
+    ncname "1.0.x"
+    param-case "2.1.x"
+    relateurl "0.2.x"
+    uglify-js "3.3.x"
+
+html-minifier@^3.5.12:
+  version "3.5.12"
+  resolved "https://registry.yarnpkg.com/html-minifier/-/html-minifier-3.5.12.tgz#6bfad4d0327f5b8d2b62f5854654ac3703b9b031"
   dependencies:
     camel-case "3.0.x"
     clean-css "4.1.x"

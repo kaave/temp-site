@@ -83,7 +83,11 @@ module.exports = {
   head: {
     title,
     meta,
-    script: [{ defer: true, src: 'https://use.fontawesome.com/releases/v5.0.8/js/all.js' }],
+    script: [
+      { defer: true, src: 'https://use.fontawesome.com/releases/v5.0.8/js/all.js' },
+      // { src: 'https://maps.googleapis.com/maps/api/js?key=[API_KEY]' },
+      { src: 'https://maps.googleapis.com/maps/api/js' },
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https//fonts.googleapis.com/css?family=Oswald:400,700,900|Roboto:400,700' },
@@ -112,7 +116,7 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/sitemap',
-    ['@nuxtjs/google-analytics', { id: googleAnalyzeID }],
+    // ['@nuxtjs/google-analytics', { id: googleAnalyzeID }],
     '~~/modules/imagemin.js',
     '~~/modules/typescript.js',
   ],

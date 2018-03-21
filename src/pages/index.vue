@@ -1,13 +1,19 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { State, Action, Getter } from 'vuex-class';
+import {} from '@types/googlemaps';
 
 import SiteHeader from '~/components/Header.vue';
+import HistoryMap from '~/components/HistoryMap.vue';
 import * as Configs from '~/constants/configs';
+import * as HistoryMapConstants from '~/constants/historyMap';
 import { PartySummary, PartySummaryEntity } from '~/interfaces/Party';
 
-@Component({ components: { SiteHeader } })
-export default class extends Vue {}
+@Component({ components: { SiteHeader, HistoryMap } })
+export default class extends Vue {
+  mapOption = HistoryMapConstants.option;
+  mapMarkers = HistoryMapConstants.markers;
+}
 </script>
 
 
@@ -30,11 +36,9 @@ export default class extends Vue {}
 <div>
   <site-header />
   <main id="main" class="Main" role="main">
-    <div class="inner">
-      <section class="map">
-        <h2 class="header">MAP</h2>
-      </section>
-    </div>
+    <!-- <div class="inner">
+    </div> -->
+    <history-map :option="mapOption" :markers="mapMarkers" />
   </main>
 </div>
 </template>

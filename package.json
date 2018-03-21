@@ -26,7 +26,7 @@
     "start": "nuxt start",
     "pregenerate": "run-s clean md",
     "generate": "nuxt generate",
-    "md": "node modules/md2json.js --overview-length 100 --entry-dir entries --summary-path src/static/parties.json --detail-path src/static/parties",
+    "md": "blog-entries-to-json --overview-length 15 --entry-dir entries --summary-path src/static/parties.json --detail-path src/static/parties",
     "clean": "rimraf dist src/static/parties.json src/static/parties/",
     "guard": "run-p test:watch typecheck:watch",
     "test": "jest",
@@ -37,7 +37,9 @@
     "lint:script": "tslint --format stylish './src/**/*.ts'",
     "lint:vue": "run-p lint:vue:*",
     "lint:vue:style": "stylelint --config .vue.stylelintrc.js './src/**/*.vue'",
-    "fix": "prettier --write './src/**/*.{ts,js,json,css,vue}'",
+    "fix": "run-s fix:*",
+    "fix:script": "npm run lint:script -- --fix",
+    "fix:other": "prettier --write './src/**/*.{js,json,css,vue}'",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit -w"
   },
@@ -45,8 +47,7 @@
     "subTaskConcurrency": 1,
     "linters": {
       "*.ts": [
-        "prettier --write",
-        "tslint",
+        "tslint --fix",
         "git add"
       ],
       "*.css": [
@@ -74,9 +75,11 @@
   ],
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
+    "@types/googlemaps": "^3.30.8",
     "@types/jest": "^22.2.0",
     "@types/node": "^9.4.6",
     "@vue/test-utils": "^1.0.0-beta.12",
+    "blog-entries-to-json": "framelunch/blog-entries-to-json",
     "chalk": "^2.3.2",
     "chokidar": "^2.0.2",
     "commander": "^2.15.0",

@@ -24,7 +24,7 @@ export default class extends Vue {
 
 
 <style lang="postcss" scoped>
-@import '../styles/variables.css';
+@import '../../styles/variables.css';
 
 .Main {
   width: 100%;
