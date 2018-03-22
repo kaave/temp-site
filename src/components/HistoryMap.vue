@@ -39,11 +39,15 @@ export default class extends Vue {
 <style lang="postcss" scoped>
 @import '../styles/variables.css';
 
+.map {
+  margin-bottom: 100px;
+}
+
 .inner {
   width: 100%;
   max-width: var(--max-content-width);
   margin: auto;
-  padding: 100px 5%;
+  padding: 0 5% 50px;
 }
 
 .header {
