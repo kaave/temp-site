@@ -31,7 +31,7 @@ export default class extends Vue {}
   <main id="main" class="Main" role="main">
     <div class="inner">
       <article>
-        <p>現在、新規組合員の受付は行っておりません。</p>
+        <p>主催kaaveに遭遇した際、声をかけてくださいませ。</p>
       </article>
     </div>
   </main>
