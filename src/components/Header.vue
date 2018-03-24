@@ -21,6 +21,16 @@ export default class Header extends Vue {
   width: 100%;
   height: 5rem;
   border-bottom: solid 1px var(--color-text);
+
+  @media (--sp) {
+    z-index: var(--z-lv-8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url('../assets/001-Basik-Paper.png');
+    background-repeat: repeat;
+    background-color: var(--color-bg);
+  }
 }
 
 .inner {

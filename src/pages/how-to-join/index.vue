@@ -19,8 +19,12 @@ export default class extends Vue {}
   max-width: var(--max-content-width);
   margin: auto;
   padding: 100px 0;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   text-decoration: underline;
+
+  @media (--not-sp) {
+    font-size: 1.6rem;
+  }
 }
 
 .inner-pad {
@@ -38,7 +42,7 @@ export default class extends Vue {}
     <div class="inner">
       <div class="inner-pad">
         <article>
-          <p>主催kaaveに遭遇した際、声をかけてくださいませ。</p>
+          <p>主催kaaveに直接お声がけくださいませ。</p>
         </article>
       </div>
     </div>

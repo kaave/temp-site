@@ -13,15 +13,23 @@ export default class AboutUs extends Vue {}
   margin-bottom: 1.5em;
   padding: 0.1em 0.5em;
   letter-spacing: 0.15em;
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-family: var(--fontFamily-oswald);
   font-weight: var(--fontWeight-bold);
   background: var(--color-text);
   color: var(--color-bg);
+
+  @media (--not-sp) {
+    font-size: 3rem;
+  }
 }
 
 .desc {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+
+  @media (--not-sp) {
+    font-size: 1.6rem;
+  }
 }
 
 .desc-line {

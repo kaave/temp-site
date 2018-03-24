@@ -21,11 +21,15 @@ export default class Members extends Vue {
   margin-bottom: 1.5em;
   padding: 0.1em 0.5em;
   letter-spacing: 0.15em;
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-family: var(--fontFamily-oswald);
   font-weight: var(--fontWeight-bold);
   background: var(--color-text);
   color: var(--color-bg);
+
+  @media (--not-sp) {
+    font-size: 3rem;
+  }
 }
 
 .cell {
@@ -43,6 +47,10 @@ export default class Members extends Vue {
   letter-spacing: -0.05em;
 }
 
+.name {
+  font-size: 0.8em;
+}
+
 .job {
   font-size: 1.4rem;
   margin-left: 0.5em;
@@ -53,7 +61,11 @@ export default class Members extends Vue {
 
 .links {
   display: inline-block;
-  font-size: 1.8rem;
+  font-size: 0.7em;
+
+  @media (--not-sp) {
+    font-size: 1.8rem;
+  }
 }
 
 .icon {
@@ -71,7 +83,11 @@ export default class Members extends Vue {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+
+  @media (--not-sp) {
+    font-size: 1.6rem;
+  }
 }
 
 .desc-line {

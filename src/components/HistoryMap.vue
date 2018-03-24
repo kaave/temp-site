@@ -22,6 +22,7 @@ export default class extends Vue {
     }
 
     this.map = new google.maps.Map(mountPoint, this.option);
+    const bounds = new google.maps.LatLngBounds();
     this.markers.forEach((data, index) => {
       const marker = new google.maps.Marker({ map: this.map, position: data.location });
       const content = `
@@ -29,9 +30,11 @@ export default class extends Vue {
   ${format(data.date, 'YYYY/MM/DD')}<br>${data.category} ${data.name}
 </a>`.trim();
       const infowindow = new google.maps.InfoWindow({ content, maxWidth: 300 });
+      bounds.extend(marker.getPosition());
 
       marker.addListener('click', () => infowindow.open(this.map, marker));
     });
+    this.map.fitBounds(bounds);
   }
 }
 </script>
@@ -61,11 +64,15 @@ export default class extends Vue {
   margin-bottom: 1.5em;
   padding: 0.1em 0.5em;
   letter-spacing: 0.15em;
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-family: var(--fontFamily-oswald);
   font-weight: var(--fontWeight-bold);
   background: var(--color-text);
   color: var(--color-bg);
+
+  @media (--not-sp) {
+    font-size: 3rem;
+  }
 }
 
 .google-map {
@@ -77,7 +84,11 @@ export default class extends Vue {
     display: block;
     width: 100%;
     height: 0;
-    padding-bottom: calc(100% / 16 * 9);
+    padding-bottom: calc(100vh / 16 * 9);
+
+    @media (--not-sp) {
+      padding-bottom: calc(100% / 16 * 9);
+    }
 
     @media (--large-tb) {
       padding-bottom: calc(1000px / 16 * 9);

@@ -22,13 +22,21 @@ export default class extends Vue {
 
 .Main {
   width: 100%;
+
+  @media (--sp) {
+    margin-top: 5rem;
+  }
 }
 
 .inner {
   width: 100%;
   max-width: var(--max-content-width);
   margin: auto;
-  padding: 100px 0 200px;
+  padding: 40px 0 60px;
+
+  @media (--not-sp) {
+    padding: 100px 0 200px;
+  }
 }
 
 .inner-pad {

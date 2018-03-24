@@ -23,16 +23,21 @@ export default class PartiesComponent extends Vue {
 
 .party {
   position: relative;
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-family: var(--fontFamily-oswald);
 
+  @media (--not-sp) {
+    font-size: 3rem;
+  }
+
   &:not(:first-child) {
-    margin: 2em 0 0;
+    margin: 3em 0 0;
   }
 }
 
 .link {
   display: inline-block;
+  font-size: 0;
 }
 
 .date,
@@ -51,21 +56,33 @@ export default class PartiesComponent extends Vue {
 
 .date {
   letter-spacing: 0.15em;
-  font-size: 3rem;
+  font-size: 2rem;
   background: var(--color-text);
   color: var(--color-bg);
+
+  @media (--not-sp) {
+    font-size: 2.4rem;
+  }
 }
 
 .title {
-  font-size: 4rem;
+  font-size: 2.4rem;
   background: #fff;
-  transform: translateX(1em);
+
+  @media (--not-sp) {
+    font-size: 3rem;
+    transform: translateX(1em);
+  }
 }
 
 .overview {
-  font-size: 2rem;
+  font-size: 1.6rem;
   background: #ccc;
-  transform: translateX(1em);
+
+  @media (--not-sp) {
+    font-size: 2rem;
+    transform: translateX(1em);
+  }
 }
 </style>
 
