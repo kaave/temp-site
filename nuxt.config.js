@@ -77,6 +77,11 @@ const sitemap = {
   routes,
 };
 
+/*
+ * plugins
+ */
+const plugins = [];
+
 module.exports = {
   srcDir: 'src/',
   env: { baseUrl },
@@ -105,6 +110,7 @@ module.exports = {
    * sitemap configuration
    */
   sitemap,
+  plugins,
   /*
   ** Build configuration
   */

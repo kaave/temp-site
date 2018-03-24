@@ -1,8 +1,16 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-@Component({})
-export default class Header extends Vue {}
+import ModalMenu from '~/components/ModalMenu.vue';
+
+@Component({ components: { ModalMenu } })
+export default class Header extends Vue {
+  isDetail = false;
+
+  handleHambergerClick() {
+    this.isDetail = !this.isDetail;
+  }
+}
 </script>
 
 
@@ -107,6 +115,52 @@ a {
   color: #666;
   font-size: 2rem;
 }
+
+.hamberger {
+  display: flex;
+  flex-wrap: wrap;
+  appearance: none;
+  border: 0;
+  background: 0;
+  width: 21px;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.-active .hamberger-line {
+    &.-center {
+      opacity: 0;
+      transform: translateX(20%);
+    }
+
+    &.-top {
+      transform: translate3d(0, 3px, 0) rotate(calc(45deg + 360deg * 2));
+    }
+
+    &.-bottom {
+      transform: translate3d(0, -3px, 0) rotate(calc(-45deg - 360deg * 2));
+    }
+  }
+}
+
+.hamberger-line {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  background: var(--color-text);
+  transition: transform 0.6s var(--easeOut-expo), opacity 0.3s;
+
+  &:not(:first-child) {
+    margin-top: 2px;
+  }
+
+  &.-top,
+  &.-bottom {
+    transform-origin: center;
+  }
+}
 </style>
 
 <template>
@@ -122,30 +176,38 @@ a {
               </router-link>
             </h1>
           </li>
-          <li class="cell -link">
+          <li class="cell -link -hidden-sp">
             <router-link to="/about">about</router-link>
           </li>
-          <li class="cell -link">
+          <li class="cell -link -hidden-sp">
             <router-link to="/parties">parties</router-link>
           </li>
-          <li class="cell -link">
+          <li class="cell -link -hidden-sp">
             <router-link to="/how-to-join">How to join</router-link>
           </li>
         </ul>
         <ul class="list -right">
-          <li class="cell -logo">
+          <li class="cell -logo -hidden-sp">
             <a href="https://twwarr.slack.com" class="icon-link" target="_blank" rel="noopener">
               <i class="fab fa-slack-hash"></i>
             </a>
           </li>
-          <li class="cell -logo">
+          <li class="cell -logo -hidden-sp">
             <a href="https://github.com/twwarr/official-site" class="icon-link" target="_blank" rel="noopener">
               <i class="fab fa-github"></i>
             </a>
+          </li>
+          <li class="cell -logo -hamberger -hidden-pc">
+            <button class="hamberger" :class="isDetail ? '-active': ''" @click="handleHambergerClick">
+              <span class="hamberger-line -top"></span>
+              <span class="hamberger-line -center"></span>
+              <span class="hamberger-line -bottom"></span>
+            </button>
           </li>
         </ul>
       </nav>
     </div>
   </div>
+  <modal-menu v-if="isDetail" />
 </header>
 </template>
