@@ -34,7 +34,13 @@ export default class extends Vue {
   width: 100%;
   max-width: var(--max-content-width);
   margin: auto;
-  padding: 100px 5%;
+  padding: 100px 0;
+}
+
+.inner-pad {
+  width: 100%;
+  margin: 0;
+  padding: 0 5%;
 }
 </style>
 
@@ -43,7 +49,9 @@ export default class extends Vue {
   <site-header />
   <main id="main" class="Main" role="main">
     <div class="inner">
-      <parties-component v-if="parties != null" :parties="parties" />
+      <div class="inner-pad">
+        <parties-component v-if="parties != null" :parties="parties" />
+      </div>
     </div>
   </main>
 </div>

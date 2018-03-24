@@ -27,6 +27,7 @@ export default Object.freeze([
     job: 'Director',
     desc: `
 初回より参加。
+当会の写真撮影担当(予定)。
 `.trim(),
   },
   {
@@ -42,6 +43,7 @@ export default Object.freeze([
     job: 'Dotter',
     desc: `
 第3回より参加。
+最近はドット絵で有名。
 `.trim(),
   },
   {
@@ -56,14 +58,16 @@ export default Object.freeze([
     name: 'steelydylan',
     job: 'Engineer',
     desc: `
-第5回より参加。
+第6回より参加予定。
+Nagoya.js主催。
 `.trim(),
   },
   {
     name: 'mkasumi',
     job: 'Engineer',
     desc: `
-第5回より参加。
+第6回より参加予定。
+Frontend Nagoya主催。
 `.trim(),
   },
 ]) as Member[];

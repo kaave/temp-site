@@ -8,3 +8,5 @@
     YuGothicM, "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
   --fontFamily-oswald: "Oswald", sans-serif;
 }
+
+@custom-media --large-tb (min-width: 1024px);

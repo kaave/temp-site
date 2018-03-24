@@ -27,6 +27,12 @@ export const markers: Marker[] = [
     category: 'ペルー料理',
     location: { lat: 35.1669397, lng: 136.9152882 },
   },
+  {
+    date: new Date('2018-03-23'),
+    name: 'インカ飯',
+    category: 'トルコ料理',
+    location: { lat: 35.165012, lng: 136.895624 },
+  },
 ];
 
 const center = (() => {

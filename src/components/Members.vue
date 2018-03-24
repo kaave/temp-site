@@ -91,12 +91,12 @@ export default class Members extends Vue {
           <span class="job">{{member.job}}</span>
           <ul class="links">
             <li v-if="member.website" class="icon -website">
-              <a :href="member.website" target="_blank" rel="noopener">
+              <a :href="member.website" class="icon-link" target="_blank" rel="noopener">
                 <i class="fas fa-home"></i>
               </a>
             </li>
             <li v-if="member.github" class="icon -github">
-              <a :href="member.github" target="_blank" rel="noopener">
+              <a :href="member.github" class="icon-link" target="_blank" rel="noopener">
                 <i class="fab fa-github"></i>
               </a>
             </li>
@@ -108,7 +108,7 @@ export default class Members extends Vue {
           </ul>
         </div>
         <p class="desc">
-          <span v-for="descLine of member.desc.split('\n')" class="desc-line">{{descLine}}</span>
+          <span v-for="(descLine, index) of member.desc.split('\n')" :key="index" class="desc-line">{{descLine}}</span>
         </p>
       </li>
     </ul>

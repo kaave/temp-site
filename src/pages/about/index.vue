@@ -32,7 +32,13 @@ export default class extends Vue {
   width: 100%;
   max-width: var(--max-content-width);
   margin: auto;
-  padding: 100px 5%;
+  padding: 100px 0;
+}
+
+.inner-pad {
+  width: 100%;
+  margin: 0;
+  padding: 0 5%;
 }
 
 .header {
@@ -87,20 +93,22 @@ hr {
   <site-header />
   <main id="main" class="Main" role="main">
     <div class="inner">
-      <h2 class="header" data-content="We are TWWARR.">
-        <span v-for="index of [0]" :key="index" class="header-text">
-          We<br>
-          are<br>
-          TWWARR.
-        </span>
-      </h2>
-      <article>
-        <about-us-component />
-        <hr>
-        <biography-component />
-        <hr>
-        <members-component :members="members" />
-      </article>
+      <div class="inner-pad">
+        <h2 class="header" data-content="We are TWWARR.">
+          <span v-for="index of [0]" :key="index" class="header-text">
+            We<br>
+            are<br>
+            TWWARR.
+          </span>
+        </h2>
+        <article>
+          <about-us-component />
+          <hr>
+          <biography-component />
+          <hr>
+          <members-component :members="members" />
+        </article>
+      </div>
     </div>
   </main>
 </div>
