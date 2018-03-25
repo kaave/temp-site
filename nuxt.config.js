@@ -10,7 +10,7 @@ const autoprefixer = require('autoprefixer');
 
 const parties = require('./src/static/parties.json');
 
-const googleAnalyzeID = '';
+const googleAnalyzeID = 'UA-116314029-1';
 const argv = parseArgs(process.argv.slice(2), {
   alias: { H: 'hostname', p: 'port' },
   string: ['H'],
@@ -122,7 +122,7 @@ module.exports = {
   },
   modules: [
     '@nuxtjs/sitemap',
-    // ['@nuxtjs/google-analytics', { id: googleAnalyzeID }],
+    ['@nuxtjs/google-analytics', { id: googleAnalyzeID }],
     '~~/modules/imagemin.js',
     '~~/modules/typescript.js',
   ],
