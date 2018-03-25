@@ -90,8 +90,7 @@ module.exports = {
     meta,
     script: [
       { defer: true, src: 'https://use.fontawesome.com/releases/v5.0.8/js/all.js' },
-      // { src: 'https://maps.googleapis.com/maps/api/js?key=[API_KEY]' },
-      { src: 'https://maps.googleapis.com/maps/api/js' },
+      { src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCKI-DxBcRL43zX_3ab2-XlRwIRR37Ovnk' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
