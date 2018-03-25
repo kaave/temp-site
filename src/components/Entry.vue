@@ -5,6 +5,10 @@ import { PartyDetailEntity } from '~/interfaces/Party';
 @Component({})
 export default class Entry extends Vue {
   @Prop() party: PartyDetailEntity;
+
+  get slashDate() {
+    return this.party.date.replace(/-/g, '/');
+  }
 }
 </script>
 
@@ -176,9 +180,9 @@ export default class Entry extends Vue {
 </style>
 
 <template>
-<article class="Article" v-if="party != null">
+<article class="Article">
   <h2 class="header">
-    <span class="date" v-html="party.date" />
+    <span class="date" v-html="slashDate" />
     <span class="title" v-html="party.title" />
   </h2>
   <div class="entry" v-html="party.html" />
