@@ -109,10 +109,15 @@ export default class Entry extends Vue {
     display: table;
     margin: 0.5em 0;
     background: #fff;
+    word-break: break-all;
   }
 
-  p + img {
-    background: #000;
+  a {
+    background: linear-gradient(to bottom, #fff 65%, #ccc 66%);
+
+    &:hover {
+      background: linear-gradient(to bottom, #fff 65%, #aaa 66%);
+    }
   }
 
   strong,
@@ -174,6 +179,7 @@ export default class Entry extends Vue {
   }
 
   img {
+    display: block;
     max-width: 100%;
   }
 }
