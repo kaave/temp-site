@@ -2,12 +2,14 @@ export interface PartySummaryEntity {
   date: string;
   overview: string;
   title: string;
+  thumbnail?: string;
 }
 
 export interface PartySummary {
   date: Date;
   overview: string;
   title: string;
+  thumbnail?: string;
 }
 
 export interface PartyDetailEntity {

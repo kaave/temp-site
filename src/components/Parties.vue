@@ -40,6 +40,39 @@ export default class PartiesComponent extends Vue {
   font-size: 0;
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+
+  @media (--not-sp) {
+    flex-direction: row;
+  }
+}
+
+.image-panel {
+  @media (--sp) {
+    width: 100%;
+  }
+}
+
+.thumbnail {
+  max-width: 100%;
+
+  @media (--not-sp) {
+    margin-top: 5px;
+    max-width: 200px;
+    max-height: 200px;
+  }
+}
+
+.title-overview {
+  @media (--not-sp) {
+    display: inline-flex;
+    flex-direction: column;
+  }
+}
+
 .date,
 .title,
 .overview {
@@ -92,8 +125,15 @@ export default class PartiesComponent extends Vue {
       <li class="party" v-for="party of parsedParties" :key="party.title">
         <router-link class="link" :to="showUrl(party.date)">
           <span class="date">{{party.date}}</span><br>
-          <span class="title" v-html="party.title" /><br>
-          <span class="overview">{{party.overview}}</span>
+          <div class="layout">
+            <div v-if="party.thumbnail" class="image-panel">
+              <img class="thumbnail" :src="party.thumbnail" :alt="party.title">
+            </div>
+            <div class="title-overview">
+              <span class="title" v-html="party.title" /><br>
+              <span class="overview">{{party.overview}}</span>
+            </div>
+          </div>
         </router-link>
       </li>
     </ul>

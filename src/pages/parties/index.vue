@@ -16,7 +16,12 @@ export default class extends Vue {
       .then(data => data.json())
       .then(
         (summary: PartySummaryEntity[]) =>
-          (this.parties = summary.map(({ date, overview, title }) => ({ overview, title, date: new Date(date) }))),
+          (this.parties = summary.map(({ date, overview, title, thumbnail }) => ({
+            thumbnail,
+            overview,
+            title,
+            date: new Date(date),
+          }))),
       );
   }
 }
