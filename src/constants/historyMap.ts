@@ -29,7 +29,7 @@ export const markers: Marker[] = [
   },
   {
     date: new Date('2018-03-23'),
-    name: 'インカ飯',
+    name: 'ロカンタ アイハン',
     category: 'トルコ料理',
     location: { lat: 35.165012, lng: 136.895624 },
   },
