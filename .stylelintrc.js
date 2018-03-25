@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['stylelint-config-framelunch'],
-  ignoreFiles: ['./*', 'dist/**/*', 'src/static/**/*'],
+  ignoreFiles: ['./*', 'dist/**/*', 'src/**/*.vue', 'src/static/**/*'],
   rules: {
     // @系の構文の前には基本空行をいれる
     'at-rule-empty-line-before': [

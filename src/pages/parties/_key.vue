@@ -6,8 +6,9 @@ import 'vue-router';
 import * as Configs from '~/constants/configs';
 import { PartyDetailEntity } from '~/interfaces/Party';
 import SiteHeader from '~/components/Header.vue';
+import Entry from '~/components/Entry.vue';
 
-@Component({ components: { SiteHeader } })
+@Component({ components: { SiteHeader, Entry } })
 export default class extends Vue {
   party: PartyDetailEntity | null = null;
 
@@ -39,11 +40,9 @@ export default class extends Vue {
   <site-header />
   <main id="main" class="Main" role="main">
     <div class="inner">
-      <article v-if="party != null">
-        <span class="article" v-html="party.date"></span>
-        <span class="article" v-html="party.title"></span>
-        <span class="article" v-html="party.html"></span>
-      </article>
+      <div class="inner-pad">
+        <entry v-if="party" :party="party" />
+      </div>
     </div>
   </main>
 </div>
