@@ -5,20 +5,28 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 export default class extends Vue {
   mounted() {
     const backgroundElement = this.$el.querySelector('.background');
-    if (!backgroundElement) {
+    if (!backgroundElement || !(backgroundElement instanceof HTMLCanvasElement)) {
       return;
     }
 
+    const widthPx = backgroundElement.getBoundingClientRect().width;
     const heightPx = backgroundElement.getBoundingClientRect().height;
+    backgroundElement.width = widthPx;
+    backgroundElement.height = heightPx;
+    const context = backgroundElement.getContext('2d');
+    if (!context) {
+      return;
+    }
+    context.strokeStyle = 'rgba(0, 0, 0, 0.9)';
     for (let i = 0; i < heightPx; i += 1) {
-      const element = document.createElement('span');
-      element.style.display = 'block';
-      element.style.background = 'rgba(0, 0, 0, 0.7)';
-      element.style.width = `${100 - Math.random() * Math.random() * 40}%`;
-      element.style.height = '1px';
-      element.style.transform = `rotate(${Math.random() * Math.random() * 2 - 1}deg)`;
-      element.style.transformOrigin = '5% center';
-      backgroundElement.appendChild(element);
+      const y = i + 0.5;
+      context.beginPath();
+      context.moveTo(0, y);
+      context.lineTo(
+        widthPx / 100 * (100 - Math.random() * Math.random() * 40),
+        y + (Math.random() * Math.random() * 4 - 2),
+      );
+      context.stroke();
     }
   }
 }
@@ -92,7 +100,7 @@ export default class extends Vue {
 <template>
   <transition name="modal">
     <aside class="Modal">
-      <div class="background" />
+      <canvas class="background" />
       <div class="inner">
         <ul class="list">
           <li class="cell">
