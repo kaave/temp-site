@@ -54,20 +54,20 @@ export default Object.freeze([
 アトレティコ・マドリードのファン。
 `.trim(),
   },
-  {
-    name: 'steelydylan',
-    job: 'Engineer',
-    desc: `
-第6回より参加予定。
-Nagoya.js主催。
-`.trim(),
-  },
-  {
-    name: 'mkasumi',
-    job: 'Engineer',
-    desc: `
-第6回より参加予定。
-Frontend Nagoya主催。
-`.trim(),
-  },
+  //   {
+  //     name: 'steelydylan',
+  //     job: 'Engineer',
+  //     desc: `
+  // 第6回より参加予定。
+  // Nagoya.js主催。
+  // `.trim(),
+  //   },
+  //   {
+  //     name: 'mkasumi',
+  //     job: 'Engineer',
+  //     desc: `
+  // 第6回より参加予定。
+  // Frontend Nagoya主催。
+  // `.trim(),
+  //   },
 ]) as Member[];
